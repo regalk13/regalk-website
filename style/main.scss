@@ -1058,6 +1058,7 @@ footer {
 .blog-list li {
   background-color: var(--dark-grey);
   width: 100%;
+  margin-block: 20px;
 }
 
 .blog--preview-content {
@@ -1114,6 +1115,10 @@ footer {
   display: block; /* Removes default image spacing */
 }
 
+.blog--preview-content div {
+  max-width: 300px;
+}
+
 .blog--preview-content div a {
   font-size: 30px;
   text-align: left;
@@ -1142,7 +1147,20 @@ footer {
 
 .md-content p {
   text-align: left;
+  font-size: 20px;
+  line-height: 35px;
   margin-block: 20px;
+}
+
+.iframe-md-video {
+  width: 100%;
+  min-height: 500px;
+  height: 100%;
+  border: none;
+}
+
+.marked-md-text {
+  color: var(--blue-color);
 }
 
 .quote {

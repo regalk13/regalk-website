@@ -50,7 +50,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
     let keywords = "Rust programming, systems programming, kernel development, AI research, web development, Three.js, Leptos, Bevy engine, open source projects";
     let author = "Regalk";
     view! {
-        <!DOCTYPE html>
+        <!DOCTYPE html> 
         <html lang="en">
             <head>
                 <meta charset="utf-8" />
@@ -246,8 +246,13 @@ fn BlogPosts() -> impl IntoView {
                     "Nix changed the way I see containers, pkg managers and the communities. Nix is the modern way to understand systems."
                 </p>
             </div>
-            <div class="blog--post glitch-post">
-                <p>"SOON"</p>
+            <div class="blog--post content-blog glitch-post">
+                <a href="/blog/didthisgamepredictthefuture-2025-04-10.md" class="blog--title">
+                    Did This Game Predict The Future?
+                </a>
+                <p class="blog--preview">
+                    "Opinions on information flow, control and the role of AI on this."
+                </p>
             </div>
             <div class="blog--post glitch-post">
                 <p>"SOON"</p>
@@ -392,7 +397,7 @@ fn HomePage() -> impl IntoView {
     view! {
         <main>
             <ScrollAnimations />
-            <div class="main-information-container scroll-appear">        
+            <div class="main-information-container scroll-appear">
                 <div class="main--right-info">
                     <div class="main--right-info-text">
                         <h1>"Welcome to my "<TypewriterComponent /></h1>

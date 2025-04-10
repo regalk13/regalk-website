@@ -88,6 +88,7 @@ pub fn Library() -> impl IntoView {
                                 <li>"Barski, Conrad – Land of Lisp"</li>
                                 <li>"Hart, William – College Algebra"</li>
                                 <li>"Love, Clyde E. – Analytic Geometry"</li>
+                                <li>"Daniel Kahneman - Thinking, Fast and Slow"</li>
                             </ul>
                         </div>
                         <div class="book-category--order">
@@ -111,6 +112,12 @@ pub fn Library() -> impl IntoView {
                                 <li>"The Age of Surveillance Capitalism"</li>
                                 <li>"The End of History and the Last Man"</li>
                                 <li>"Notes from Underground - Fyodor Dostoevsky"</li>
+                                <li>
+                                    "The Art of Strategy: A Game Theorist's Guide to Success in Business and Life"
+                                </li>
+                                <li>
+                                    "The Black Swan: The Impact of the Highly Improbable - Nassim Taleb"
+                                </li>
                             </ul>
                         </div>
                         <div class="book-category--order">
