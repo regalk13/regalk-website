@@ -2,7 +2,16 @@
 FROM rustlang/rust:nightly-alpine as builder
 
 RUN apk update && \
-    apk add --no-cache bash curl npm libc-dev binaryen
+    apk add --no-cache \
+      bash \
+      curl \
+      npm \
+      libc-dev \
+      build-base \          # gcc, make, musl-dev, etc.
+      clang \               # el compilador C que busca cc-rs
+      llvm-dev \            # headers de LLVM
+      lld \                 # linker LLVM
+      binaryen              # toolkit para WASM optimizaciones
     # protoc openssl-dev protobuf-dev gcc git g++ libc-dev make binaryen
 
 RUN npm install -g sass
