@@ -11,7 +11,16 @@ RUN apk update && \
       clang \
       llvm-dev \
       lld \
-      binaryen
+      binaryen \
+      wasi-sdk
+
+RUN apk add --no-cache wget \
+  && wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-19/wasi-sdk-19.0-linux.tar.gz \
+  && tar -xzf wasi-sdk-19.0-linux.tar.gz -C /opt \
+  && rm wasi-sdk-19.0-linux.tar.gz
+
+ENV WASI_SDK_PATH=/opt/wasi-sdk-19.0
+ENV CC_wasm32_unknown_unknown="${WASI_SDK_PATH}/bin/clang --target=wasm32-unknown-unknown --sysroot=${WASI_SDK_PATH}/share/wasi-sysroot"
 
 RUN npm install -g sass
 
