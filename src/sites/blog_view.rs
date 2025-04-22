@@ -1,7 +1,94 @@
 use leptos::prelude::*;
 use leptos_router::hooks::use_location;
 use thiserror::Error;
+use syntect::easy::HighlightLines;
+use syntect::highlighting::Style;
+use syntect::parsing::SyntaxSet;
+use syntect::util::LinesWithEndings;
+use two_face::re_exports::syntect;
+use two_face::theme::EmbeddedLazyThemeSet;
+
 include!(concat!(env!("OUT_DIR"), "/blog_posts.rs"));
+
+
+lazy_static::lazy_static! {
+    static ref SYNTAXES: SyntaxSet = two_face::syntax::extra_newlines();
+    static ref THEMES: EmbeddedLazyThemeSet = two_face::theme::extra();
+    static ref THEME: syntect::highlighting::Theme = THEMES.get(two_face::theme::EmbeddedThemeName::VisualStudioDarkPlus).clone();
+}
+
+fn highlight_code_block(code: &str, language: &str) -> String {
+    let syntax = SYNTAXES
+        .find_syntax_by_token(language)
+        .unwrap_or_else(|| SYNTAXES.find_syntax_plain_text());
+
+    let mut h = HighlightLines::new(syntax, &THEME);
+    let mut html = String::from("<pre class=\"code-block\"><code>");
+
+    for line in LinesWithEndings::from(code) {
+        let ranges: Vec<(Style, &str)> = h.highlight_line(line, &SYNTAXES).unwrap();
+        let escaped = syntect::html::styled_line_to_highlighted_html(
+            &ranges[..],
+            syntect::html::IncludeBackground::No,
+        ).unwrap();
+        html.push_str(&escaped);
+    }
+
+    html.push_str("</code></pre>");
+    html
+}
+
+#[server]
+async fn render_html(code: String, language: String) -> Result<String, ServerFnError> {
+    let syntax = SYNTAXES
+        .find_syntax_by_token(&language)
+        .unwrap_or_else(|| SYNTAXES.find_syntax_plain_text());
+
+    let mut h = HighlightLines::new(syntax, &THEME);
+    let mut html = String::from("<pre class=\"code-block\"><code>");
+
+    for line in LinesWithEndings::from(&code) {
+        let ranges: Vec<(Style, &str)> = h.highlight_line(line, &SYNTAXES).unwrap();
+        let escaped = syntect::html::styled_line_to_highlighted_html(
+            &ranges[..],
+            syntect::html::IncludeBackground::No,
+        ).unwrap();
+        html.push_str(&escaped);
+    }
+
+    html.push_str("</code></pre>");
+    Ok(html)
+}
+
+
+#[component]
+fn CodeBlock(code: String, lang: String) -> impl IntoView {
+    let html = Resource::new(move || (code.clone(), lang.clone()), |(code, language)| async move {
+        render_html(code, language).await
+    });
+
+    view! {
+        <Suspense fallback=move || {
+            view! {
+                <pre class="code-block"><code>{""}</code></pre>
+            }
+        }>
+            {move || {
+                match html.get() {
+                    // still loading: we’ll never hit this because fallback covered it
+                    None => view! { <></> }.into_any(),
+                    // got HTML
+                    Some(Ok(html)) => view! {
+                        <div inner_html=html />
+                    }.into_any(),
+                    Some(Err(_e)) => view! {
+                        <></>
+                    }.into_any()
+                }
+            }}
+        </Suspense>
+    }
+}
 
 fn parse_md_content(content: &str) -> impl IntoView {
     use lazy_static::lazy_static;
@@ -24,26 +111,25 @@ fn parse_md_content(content: &str) -> impl IntoView {
     let mut output = Vec::new();
     let mut in_code_block = false;
     let mut code_block_buffer = Vec::new();
-
+    let mut code_lang       = String::new();
     for line in lines {
+
         if line.trim_start().starts_with("```") {
-            if in_code_block {
-                let code_content = code_block_buffer.join("\n");
-                output.push(
-                    view! {
-                        <pre
-                            class="code-block"
-                            style="background: #24283b; padding: 1rem; border-radius: 4px; overflow: auto;"
-                        >
-                            <code>{code_content}</code>
-                        </pre>
-                    }
-                    .into_any(),
-                );
-                code_block_buffer.clear();
-            }
-            in_code_block = !in_code_block;
-            continue;
+    if in_code_block { // Ending a code block
+        let code = code_block_buffer.join("\n");
+        let lang = code_lang.clone();
+        output.push(
+            view! { <CodeBlock code lang/> }.into_any()
+        );
+        code_block_buffer.clear();
+        code_lang.clear();
+    } else {
+        // Starting a code block with optional language
+        let lang = line.trim_start().trim_start_matches("```").trim();
+        code_lang = lang.to_string();
+    }
+    in_code_block = !in_code_block;
+    continue;
         }
 
         if in_code_block {

@@ -26,6 +26,8 @@ regex = "1.11.1"
 lazy_static = "1.5.0"
 glob = "0.3"
 phf = { version = "0.11", features = ["macros"] }
+syntect = "5"
+two-face = "0.4.3"
 
 [build-dependencies]
 glob = "0.3"
