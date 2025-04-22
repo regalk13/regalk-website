@@ -86,6 +86,7 @@ pub fn App() -> impl IntoView {
 
     view! {
         <Stylesheet id="leptos" href="/pkg/regalk.css" />
+        <Stylesheet id="leptos" href="/pkg/github.css" />
 
         // sets the document title
         <Title text="Regalk | Computer Scientist & Full-Stack Developer" />

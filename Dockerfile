@@ -2,25 +2,8 @@
 FROM rustlang/rust:nightly-alpine as builder
 
 RUN apk update && \
-    apk add --no-cache \
-      bash \
-      curl \
-      npm \
-      libc-dev \
-      build-base \
-      clang \
-      llvm-dev \
-      lld \
-      binaryen \
-      wasi-sdk
-
-RUN apk add --no-cache wget \
-  && wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-19/wasi-sdk-19.0-linux.tar.gz \
-  && tar -xzf wasi-sdk-19.0-linux.tar.gz -C /opt \
-  && rm wasi-sdk-19.0-linux.tar.gz
-
-ENV WASI_SDK_PATH=/opt/wasi-sdk-19.0
-ENV CC_wasm32_unknown_unknown="${WASI_SDK_PATH}/bin/clang --target=wasm32-unknown-unknown --sysroot=${WASI_SDK_PATH}/share/wasi-sysroot"
+    apk add --no-cache bash curl npm libc-dev binaryen
+    # protoc openssl-dev protobuf-dev gcc git g++ libc-dev make binaryen
 
 RUN npm install -g sass
 
