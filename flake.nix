@@ -1,5 +1,5 @@
 {
-  description = "IT-MC Website Development with Rust + Leptos";
+  description = "Regalk Website Development with Rust + Leptos";
 
   inputs = {
     nixpkgs.url      = "github:nixos/nixpkgs/nixos-unstable";
