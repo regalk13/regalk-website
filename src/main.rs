@@ -10,6 +10,9 @@ async fn main() {
     use std::{convert::Infallible};
     use http::Response;
     use axum::body::Body;
+    use axum::response::Redirect;
+    use axum::extract::Path;
+
     let conf = get_configuration(None).unwrap();
     let addr = conf.leptos_options.site_addr;
     let leptos_options = conf.leptos_options;
@@ -23,6 +26,12 @@ async fn main() {
             let res = Response::new(body);
             Ok::<_, Infallible>(res)
         }))
+        .route(
+            "/.well-known/matrix/:path",
+            get(|Path(path): Path<String>| async move {
+                Redirect::permanent(&format!("https://matrix.regalk.dev/.well-known/matrix/{}", path))
+            }),
+        )
         .leptos_routes(&leptos_options, routes, {
             let leptos_options = leptos_options.clone();
             move || shell(leptos_options.clone())
