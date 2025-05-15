@@ -1014,6 +1014,30 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: left !important;
+}
+
+.contact-ways--container {
+  max-width: 900px;
+  line-height: 30px;
+}
+
+.contact-ways--container h3 {
+  margin-block: 10px;
+}
+
+.contact-ways--container p {
+  font-size: 16px;
+}
+.contact-ways--container code {
+  font-size: 14px;
+  background-color: #333;
+}
+.inspired-msg {
+  text-align: center;
+  margin-block: 30px;
+  font-size: 18px;
+  font-style: italic;
 }
 
 .email--contact-me{
@@ -1226,6 +1250,9 @@ footer {
 }
 
 @media only screen and (max-width: 1360px) {
+  .contact-ways--container {
+    padding: 10px;
+  }
   .blog--post {
     width: 90%;
   }
