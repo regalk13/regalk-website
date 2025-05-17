@@ -49,15 +49,15 @@ fn parse_md_content(content: &str) -> impl IntoView {
         let code = code_block_buffer.join("\n");
         let lang = code_lang.clone();
         output.push(
-            view! { 
+            view! {
                 <pre
                     node_ref=el
-                    class={String::from("code-block language-")+&lang}
+                    class=String::from("code-block language-") + &lang
                     style="background: #1a1b26; padding: 1rem; border-radius: 4px; overflow: auto;"
                 >
                     <code>{code}</code>
                 </pre>
-                }.into_any()
+            }.into_any()
         );
         code_block_buffer.clear();
         code_lang.clear();
@@ -280,7 +280,7 @@ pub fn BlogView() -> impl IntoView {
                         <div class="blog--content-view">
                             <br />
                             <br />
-        
+
                             <span>{post.date.to_string()}</span>
                             <div class="md-content">
                                 <div>{parse_md_content(&post.content.to_string())}</div>
