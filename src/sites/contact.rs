@@ -16,7 +16,9 @@ pub fn Contact() -> impl IntoView {
                 <p>
                     "I'm open to chatting about my blog posts, books from my library, ongoing projects, new project ideas, job opportunities, and any technical topics that spark curiosity. Feel free to reach out for interesting discussions!"
                 </p>
-                <h3>Email <a href="mailto:contact@regalk.dev">contact [at] regalk [dot] dev</a></h3>
+                <h3>
+                    Email: <a href="mailto:contact@regalk.dev">contact [at] regalk [dot] dev</a>
+                </h3>
                 <div class="email--contact-me">
                     <p>
                         To ensure confidentiality and authenticity, I use GPG for email encryption and signing:

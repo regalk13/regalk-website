@@ -1226,6 +1226,15 @@ footer {
   line-height: 30px;
 }
 
+
+.about--skills-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
 @media only screen and (max-width: 1700px) {
   h1 {
     font-size: 40px;

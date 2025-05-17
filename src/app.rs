@@ -204,11 +204,11 @@ fn AboutMe() -> impl IntoView {
 #[component]
 fn Interests() -> impl IntoView {
     let contents: Vec<_> = [
-        "🕊️ Loves FreeSoftware phylosophy.",
+        "🕊️ Loves FreeSoftware philosophy.",
         "📚 Enjoys reading books and diving into new ideas.",
         "💻 Loves building software and exploring creative projects in free time.",
         "🚶 Appreciates minimalism.",
-        "🔤 Enjoys learning languages : 🇬🇧, 🇪🇸, 🇫🇷 (soon 🇩🇪, 🇵🇹).",
+        "🔤 Enjoys learning languages : 🇪🇸, 🇬🇧, 🇫🇷 (soon 🇩🇪, 🇵🇹).",
     ]
     .into_iter()
     .map(|content| view! { <li class="list-disc">{content}</li> })
@@ -333,11 +333,6 @@ fn ProjectsSection() -> impl IntoView {
             <div class="project--content">
                 <div class="project-information">
                     <h2 class="section-title">"Featured Projects"</h2>
-                    <p class="section-subtitle">
-                        "A selection of open source initiatives I've contributed to or created.
-                        Passion drives innovation - these projects represent my journey in 
-                        software craftsmanship."
-                    </p>
                 </div>
                 <div class="project-grid">
                     {projects
@@ -402,7 +397,8 @@ fn HomePage() -> impl IntoView {
                     <div class="main--right-info-text">
                         <h1>"Welcome to my "<TypewriterComponent /></h1>
                         <p class="main--info-text">
-                            "Hi, I'm (Regalk)! A computer scientist who loves exploring hardware, software, and everything in between. From AI hardware to kernel development and brain interfaces, I love building and learning. Oh, and I once competed internationally in web development!"
+                            "Hi, I'm (Regalk)! A computer-scientist student and developer focused on embedded sytems and AI.
+                            I’m actively training and pointing to work as an embedded-system engineer and edge-AI developer, after participated internationally in web development!"
                         </p>
                     </div>
                     <figure class="main--image-container">
@@ -422,14 +418,117 @@ fn HomePage() -> impl IntoView {
                 <div class="about--content">
                     <h2>"About Me"</h2>
                     <p>
-                        "I'm a tech guy with a deep curiosity for both hardware and software. Throughout my journey as a computer scientist, I've delved into mutliple areas where software is needed (I like beign a generalist!). My goal is to always learn, build, and explore innovative technologies that shape the future and improve human life. "
+                        "I'm a 20yo who works and study on the CS field, I have a deep curiosity for both hardware and software. From experience in Web Development that gave me the opportunity to be on an international competition to my pivot on embedded systems, low-level kernels, IoT, AI on embedded devices and Edge AI. My goal is to always learn, build, and partnering with inspiring people to build tools that push technology and society forward."
                     </p>
                     <br />
                     <AboutMe />
                     <br />
-                    <p>
-                        "I have experience in some progamming languages like C, C++, Python, Rust, Zig, JS, TS, Go, Haskell and some more..."
-                    </p>
+                    <p>"Progamming languages and tools that I use and love:"</p>
+
+                    <div class="about--skills-container" align="left">
+                        <img
+                            src="./skills/Rust.svg"
+                            height="30"
+                            alt="Rust"
+                        />
+
+                        <img
+                            src="./skills/C.svg"
+                            height="30"
+                            alt="C"
+                        />
+                        <img
+                            src="./skills/cpp.svg"
+                            height="30"
+                            alt="C++"
+                        />
+                        <img
+                            src="./skills/Nix.svg"
+                            height="30"
+                            alt="Nix"
+                        />
+                        <img
+                            src="./skills/Haskell.svg"
+                            height="30"
+                            alt="Haskell"
+                        />
+                        <img
+                            src="./skills/HTML.svg"
+                            height="30"
+                            alt="HTML"
+                        />
+                        <img
+                            src="./skills/GNU_Linux.svg"
+                            height="30"
+                            alt="GNU/Linux"
+                        />
+                        <img
+                            src="./skills/JavaScript.svg"
+                            height="30"
+                            alt="JavaScript"
+                        />
+                        <img
+                            src="./skills/TypeScript.svg"
+                            height="30"
+                            alt="TypeScript"
+                        />
+                        <img
+                            src="./skills/CSS.svg"
+                            height="30"
+                            alt="CSS"
+                        />
+                        <img
+                            src="./skills/Laravel.svg"
+                            height="30"
+                            alt="Laravel"
+                        />
+                        <img
+                            src="./skills/Lua.svg"
+                            height="30"
+                            alt="Lua"
+                        />
+                        <img
+                            src="./skills/PostgreSQL.svg"
+                            height="30"
+                            alt="PostgreSQL"
+                        />
+                        <img
+                            src="./skills/PHP.svg"
+                            height="30"
+                            alt="PHP"
+                        />
+                        <img
+                            src="./skills/Python.svg"
+                            height="30"
+                            alt="Python"
+                        />
+                        <img
+                            src="./skills/React.svg"
+                            height="30"
+                            alt="React"
+                        />
+                        <img
+                            src="./skills/Svelte.svg"
+                            height="30"
+                            alt="Svelte"
+                        />
+                        <img
+                            src="./skills/Android.svg"
+                            height="30"
+                            alt="Android"
+                        />
+                        <img
+                            src="./skills/Arduino.svg"
+                            height="30"
+                            alt="Arduino"
+                        />
+                        <img
+                            src="./skills/Vue.js.svg"
+                            height="30"
+                            alt="Vue.js"
+                        />
+                    </div>
+
                     <br />
                     <h3>"Interests"</h3>
 
@@ -439,7 +538,10 @@ fn HomePage() -> impl IntoView {
 
                     <h3>Setup</h3>
 
-                    <p style="margin-bottom: 15px">Linux Setup</p>
+                    <p style="margin-bottom: 15px">
+                        My personal dev
+                        <a href="https://github.com/regalk13/dotfiles">Linux Setup</a>
+                    </p>
 
                     <Setup />
                     <div class="quote--container">
