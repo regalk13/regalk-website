@@ -426,107 +426,27 @@ fn HomePage() -> impl IntoView {
                     <p>"Progamming languages and tools that I use and love:"</p>
 
                     <div class="about--skills-container" align="left">
-                        <img
-                            src="./skills/Rust.svg"
-                            height="30"
-                            alt="Rust"
-                        />
+                        <img src="./skills/Rust.svg" height="30" alt="Rust" />
 
-                        <img
-                            src="./skills/C.svg"
-                            height="30"
-                            alt="C"
-                        />
-                        <img
-                            src="./skills/cpp.svg"
-                            height="30"
-                            alt="C++"
-                        />
-                        <img
-                            src="./skills/Nix.svg"
-                            height="30"
-                            alt="Nix"
-                        />
-                        <img
-                            src="./skills/Haskell.svg"
-                            height="30"
-                            alt="Haskell"
-                        />
-                        <img
-                            src="./skills/HTML.svg"
-                            height="30"
-                            alt="HTML"
-                        />
-                        <img
-                            src="./skills/GNU_Linux.svg"
-                            height="30"
-                            alt="GNU/Linux"
-                        />
-                        <img
-                            src="./skills/JavaScript.svg"
-                            height="30"
-                            alt="JavaScript"
-                        />
-                        <img
-                            src="./skills/TypeScript.svg"
-                            height="30"
-                            alt="TypeScript"
-                        />
-                        <img
-                            src="./skills/CSS.svg"
-                            height="30"
-                            alt="CSS"
-                        />
-                        <img
-                            src="./skills/Laravel.svg"
-                            height="30"
-                            alt="Laravel"
-                        />
-                        <img
-                            src="./skills/Lua.svg"
-                            height="30"
-                            alt="Lua"
-                        />
-                        <img
-                            src="./skills/PostgreSQL.svg"
-                            height="30"
-                            alt="PostgreSQL"
-                        />
-                        <img
-                            src="./skills/PHP.svg"
-                            height="30"
-                            alt="PHP"
-                        />
-                        <img
-                            src="./skills/Python.svg"
-                            height="30"
-                            alt="Python"
-                        />
-                        <img
-                            src="./skills/React.svg"
-                            height="30"
-                            alt="React"
-                        />
-                        <img
-                            src="./skills/Svelte.svg"
-                            height="30"
-                            alt="Svelte"
-                        />
-                        <img
-                            src="./skills/Android.svg"
-                            height="30"
-                            alt="Android"
-                        />
-                        <img
-                            src="./skills/Arduino.svg"
-                            height="30"
-                            alt="Arduino"
-                        />
-                        <img
-                            src="./skills/Vue.js.svg"
-                            height="30"
-                            alt="Vue.js"
-                        />
+                        <img src="./skills/C.svg" height="30" alt="C" />
+                        <img src="./skills/cpp.svg" height="30" alt="C++" />
+                        <img src="./skills/Nix.svg" height="30" alt="Nix" />
+                        <img src="./skills/Haskell.svg" height="30" alt="Haskell" />
+                        <img src="./skills/HTML.svg" height="30" alt="HTML" />
+                        <img src="./skills/GNU_Linux.svg" height="30" alt="GNU/Linux" />
+                        <img src="./skills/JavaScript.svg" height="30" alt="JavaScript" />
+                        <img src="./skills/TypeScript.svg" height="30" alt="TypeScript" />
+                        <img src="./skills/CSS.svg" height="30" alt="CSS" />
+                        <img src="./skills/Laravel.svg" height="30" alt="Laravel" />
+                        <img src="./skills/Lua.svg" height="30" alt="Lua" />
+                        <img src="./skills/PostgreSQL.svg" height="30" alt="PostgreSQL" />
+                        <img src="./skills/PHP.svg" height="30" alt="PHP" />
+                        <img src="./skills/Python.svg" height="30" alt="Python" />
+                        <img src="./skills/React.svg" height="30" alt="React" />
+                        <img src="./skills/Svelte.svg" height="30" alt="Svelte" />
+                        <img src="./skills/Android.svg" height="30" alt="Android" />
+                        <img src="./skills/Arduino.svg" height="30" alt="Arduino" />
+                        <img src="./skills/Vue.js.svg" height="30" alt="Vue.js" />
                     </div>
 
                     <br />
@@ -540,7 +460,9 @@ fn HomePage() -> impl IntoView {
 
                     <p style="margin-bottom: 15px">
                         My personal dev
-                        <a href="https://github.com/regalk13/dotfiles" target="_blank">Linux Setup</a>
+                        <a href="https://github.com/regalk13/dotfiles" target="_blank">
+                            Linux Setup
+                        </a>
                     </p>
 
                     <Setup />
@@ -573,7 +495,11 @@ fn HomePage() -> impl IntoView {
 
                     <h2>"Blog"</h2>
                     <p>
-                        A blog were I develop some vague ideas I usually think off. Add it to your <a href="./rss.xml" target="_blank">RSS feed</a> " and feel free to reach out—let's discuss fascinating topics together!"
+                        A blog were I develop some vague ideas I usually think off. Add it to your
+                        <a href="./rss.xml" target="_blank">
+                            RSS feed
+                        </a>
+                        " and feel free to reach out—let's discuss fascinating topics together!"
                     </p>
                     <BlogPosts />
                 </div>
