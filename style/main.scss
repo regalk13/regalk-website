@@ -21,6 +21,7 @@
   padding: 0px;
   scroll-behavior: smooth;
   margin: 0px;
+  font-size: 18px;
 }
 
 ::-moz-selection {
@@ -234,11 +235,16 @@ h1 {
   text-align: left;
 }
 
+.about--content {
+  font-size: 18px;
+}
+
 .blog--content {
   margin-top: 70px;
   max-width: 1000px;
   line-height: 1.5em;
   text-align: left;
+  font-size: 18px;
 }
 
 .project--content {
@@ -654,6 +660,7 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  font-size: 18px;
 }
 
 .footer-main {
@@ -691,7 +698,7 @@ footer {
 .footer-bottom {
   padding-top: 1rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 16px;
 }
 
 .footer-bottom a {
@@ -925,6 +932,7 @@ footer {
   height: 230px;
   -webkit-backdrop-filter: blur(8px) saturate(180%);
   backdrop-filter: blur(8px) saturate(180%);
+  font-size: 18px;
 }
 
 .tech-stack {

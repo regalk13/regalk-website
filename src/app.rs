@@ -540,7 +540,7 @@ fn HomePage() -> impl IntoView {
 
                     <p style="margin-bottom: 15px">
                         My personal dev
-                        <a href="https://github.com/regalk13/dotfiles">Linux Setup</a>
+                        <a href="https://github.com/regalk13/dotfiles" target="_blank">Linux Setup</a>
                     </p>
 
                     <Setup />
@@ -573,7 +573,7 @@ fn HomePage() -> impl IntoView {
 
                     <h2>"Blog"</h2>
                     <p>
-                        "A blog were I develop some vague ideas I usually think off. Add it to your RSS feed and feel free to reach out—let's discuss fascinating topics together!"
+                        A blog were I develop some vague ideas I usually think off. Add it to your <a href="./rss.xml" target="_blank">RSS feed</a> " and feel free to reach out—let's discuss fascinating topics together!"
                     </p>
                     <BlogPosts />
                 </div>

@@ -10,7 +10,7 @@ pub fn Library() -> impl IntoView {
         <section class="main--library-container">
             <div class="main--library-text">
                 <p>
-                    "This is my curated collection of both physical and digital resources - a library of books (fiction and non-fiction), papers and materials I find interesting across various disciplines. Currently organized into: computer science, mathematics, political science, linguistics/languages, and extra topics. This ever-growing collection reflects my diverse approach to learning but no all my opinions."
+                    "This is my curated collection of both physical and digital resources a library that includes books(fiction and non-fiction), papers and materials I find interesting across various topics. Currently organized into: computer science, mathematics, political science, linguistics/languages, and more."
                 </p>
             </div>
 
