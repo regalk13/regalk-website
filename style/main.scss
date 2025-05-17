@@ -722,9 +722,11 @@ footer {
 
 .typewriter {
   color: var(--blue-color);
+  font-size: inherit;
 }
 
 .cursor {
+  font-size: inherit;
   border-right: .05em solid;
   animation: caret 1s steps(1) infinite;
 }
