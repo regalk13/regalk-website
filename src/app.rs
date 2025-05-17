@@ -187,12 +187,12 @@ fn AboutMe() -> impl IntoView {
     let contents: Vec<_> = [
         "🎂 Birthday: March 8.",
         "🧮 Passionate about mathematics, physics, and programming.",
-        "🤓 Lifelong learner, driven by curiosity and the pursuit of mastery.",
+        "🤓 Lifelong learner, driven by curiosity.",
         "🤖 Enthusiastic about low-level programming, including hardware, OS, kernel development, and drivers.",
         "🤖 Excited about AI, exploring new ideas for intelligent agents, and advancing knowledge in deep learning.",
         "🌐 Full-stack web developer with experience in modern frameworks, always seeking efficient and scalable solutions.",
-        "🔧 Currently focusing on Rust and exploring alternatives like Leptos, Axum, and other frameworks to build efficient systems.",
-        "💻 Enjoys experimenting with cluster building, IoT, RISC-V, and ARM for fun and learning.",
+        "🔧 Currently focusing on Rust and exploring alternatives like Leptos, Axum, and other frameworks to build efficient websites.",
+        "💻 Experimenting with cluster building, IoT, and some architectures like RISC-V, and ARM.",
     ]
     .into_iter()
     .map(|content| view! { <li class="list-disc">{content}</li> })
@@ -418,8 +418,13 @@ fn HomePage() -> impl IntoView {
                 <div class="about--content">
                     <h2>"About Me"</h2>
                     <p>
-                        "I'm a 20yo who works and study on the CS field, I have a deep curiosity for both hardware and software. From experience in Web Development that gave me the opportunity to be on an international competition to my pivot on embedded systems, low-level kernels, IoT, AI on embedded devices and Edge AI. My goal is to always learn, build, and partnering with inspiring people to build tools that push technology and society forward."
+                        "I'm a 20yo who works and study on the CS field, After some years as FullStack developer and representing my country in an international web‑development competition, I redirected that curiosity toward embedded systems writing bare‑metal code, experimenting with IoT prototypes, and implementing AI models onto multiple hardware."
                     </p>
+                    <br />
+                    <p>
+                        "My goal is to always keep learning and collaborate with people who care about well‑engineered, energy‑efficient solutions, and bringing AI to edge devices. I focus on code that runs fast, uses less power, and is easy for others to build on."
+                    </p>
+                    <br />
                     <br />
                     <AboutMe />
                     <br />
