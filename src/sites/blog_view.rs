@@ -2,6 +2,7 @@ use leptos::html::Pre;
 use leptos::prelude::*;
 use leptos_router::hooks::use_location;
 use thiserror::Error;
+use leptos_meta::{Meta, Title};
 
 #[cfg(not(feature = "ssr"))]
 use crate::hljs::highlight_all;
@@ -23,8 +24,6 @@ fn parse_md_content(content: &str) -> impl IntoView {
             Regex::new(r"_(.*?)_").unwrap();
     }
 
-    // Split content into lines. We no longer filter out empty lines because
-    // an empty line might be meaningful inside a code block.
     let lines: Vec<String> = content.lines().map(|s| s.to_string()).collect();
 
     let mut output = Vec::new();
@@ -45,29 +44,29 @@ fn parse_md_content(content: &str) -> impl IntoView {
     for line in lines {
 
         if line.trim_start().starts_with("```") {
-    if in_code_block { // Ending a code block
-        let code = code_block_buffer.join("\n");
-        let lang = code_lang.clone();
-        output.push(
-            view! {
-                <pre
-                    node_ref=el
-                    class=String::from("code-block language-") + &lang
-                    style="background: #1a1b26; padding: 1rem; border-radius: 4px; overflow: auto;"
-                >
-                    <code>{code}</code>
-                </pre>
-            }.into_any()
-        );
-        code_block_buffer.clear();
-        code_lang.clear();
-    } else {
-        // Starting a code block with optional language
-        let lang = line.trim_start().trim_start_matches("```").trim();
-        code_lang = lang.to_string();
-    }
-    in_code_block = !in_code_block;
-    continue;
+            if in_code_block { // Ending a code block
+                let code = code_block_buffer.join("\n");
+                let lang = code_lang.clone();
+                output.push(
+                    view! {
+                        <pre
+                            node_ref=el
+                            class=String::from("code-block language-") + &lang
+                            style="background: #1a1b26; padding: 1rem; border-radius: 4px; overflow: auto;"
+                        >
+                            <code>{code}</code>
+                        </pre>
+                    }.into_any()
+                );
+                code_block_buffer.clear();
+                code_lang.clear();
+            } else {
+                // Starting a code block with optional language
+                let lang = line.trim_start().trim_start_matches("```").trim();
+                code_lang = lang.to_string();
+            }
+            in_code_block = !in_code_block;
+            continue;
         }
 
         if in_code_block {
@@ -251,6 +250,7 @@ fn get_blog_post(filename: String) -> Result<BlogPost, ServerFnError> {
     Ok(BlogPost {
         title: blog_post.title.to_string(),
         date: blog_post.date.to_string(),
+        image: blog_post.image.to_string(),
         content: blog_post.content.to_string(),
         filename: blog_post.filename.to_string(),
     })
@@ -269,7 +269,38 @@ pub fn BlogView() -> impl IntoView {
     };
 
     let blog_post = get_blog_post(filename());
+    
+    let (title_text, desc_text, og_image) = match &blog_post {
+        Ok(p) => (
+            p.title.clone(),
+            p.content
+             .lines()
+             .map(str::trim)
+             .take(10)
+             .collect::<Vec<_>>()
+             .join(" ")
+             .chars().take(150).collect(),
+            format!("https://regalk.dev/{}", p.image),
+        ),
+        Err(_) => (
+            "Blog post not found".to_string(),
+            "No description available".to_string(),
+            "/default-og.png".to_string(),
+        ),
+    };
+
     view! {
+        <Title text=match &blog_post {
+            Ok(p) => p.title.clone(),
+            Err(_) => "Blog post not found".to_string(),
+        } />
+        <Meta name="description" content=desc_text.clone() />
+        <Meta property="og:title" content=title_text.clone() />
+        <Meta property="og:description" content=desc_text.clone() />
+        <Meta property="og:image" content=og_image.clone() />
+        <Meta name="twitter:card" content="summary_large_image" />
+        <Meta name="twitter:image" content=og_image.clone() />
+
         <div>
             {match blog_post {
                 Ok(post) => {
@@ -311,6 +342,7 @@ pub fn BlogView() -> impl IntoView {
 pub struct BlogPost {
     title: String,
     date: String,
+    image: String,
     content: String,
     filename: String,
 }

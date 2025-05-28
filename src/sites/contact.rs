@@ -1,9 +1,29 @@
 use leptos::prelude::*;
+use leptos_meta::{Meta, Title, Link};
+
 
 #[component]
 pub fn Contact() -> impl IntoView { 
 
     return view! {
+        <Title text="Contact | Regalk.dev" />
+
+        <Meta
+            name="description"
+            content="I'm open to chatting about my blog posts, books from my library, ongoing projects, new project ideas, job opportunities, and any technical topics that spark curiosity. Feel free to reach out for interesting discussions."
+        />
+
+        <Meta property="og:title" content="Contact Regalk.dev" />
+        <Meta
+            property="og:description"
+            content="I'm open to chatting about my blog posts, books from my library, ongoing projects, new project ideas, job opportunities, and any technical topics that spark curiosity. Feel free to reach out for interesting discussions!"
+        />
+        <Meta property="og:type" content="website" />
+        <Meta property="og:url" content="https://regalk.dev/contact" />
+        <Meta property="og:site_name" content="regalk.dev" />
+        <Meta property="og:image" content="https://regalk.dev/regalk-main.webp" />
+        <Link rel="canonical" href="https://regalk.dev/contact" />
+
         <header class="title-main--page--container">
             <h1>CONTACT</h1>
         </header>

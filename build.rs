@@ -37,26 +37,29 @@ fn main() {
                 break;
             }
         }
-        
+
+        let image = metadata.get("image").cloned().unwrap_or_default();
         posts.push((
             filename.to_string(),
             metadata.get("title").cloned().unwrap_or_default(),
             metadata.get("date").cloned().unwrap_or_default(),
+            image.clone(),
             body,
         ));
     }
 
     let entries_code: Vec<String> = posts
     .iter()
-    .map(|(filename, title, date, content)| {
+    .map(|(filename, title, date, image, content)| {
         format!(
             r#""{}" => BlogPostTransfer {{
                 title: {:?},
                 date: {:?},
+                image: {:?},
                 content: {:?},
                 filename: {:?}
             }}"#,
-            filename, title, date, content, filename
+            filename, title, date, image, content, filename
         )
     })
     .collect();
@@ -72,6 +75,7 @@ fn main() {
             pub struct BlogPostTransfer {{
                 pub title: &'static str,
                 pub date: &'static str,
+                pub image: &'static str,
                 pub content: &'static str,
                 pub filename: &'static str,
             }}

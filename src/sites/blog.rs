@@ -1,6 +1,8 @@
 use leptos::prelude::*;
 use thiserror::Error; // Add thiserror to dependencies
 
+use leptos_meta::{Meta, Title, Link};
+
 #[derive(Error, Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub enum BlogError {
     #[error("IO error: {0}")]
@@ -79,13 +81,33 @@ pub fn Blog() -> impl IntoView {
         get_blog_posts().await
     });
     view! {
+        <Title text="Blogs | Regalk.dev Blogs" />
+
+        <Meta
+            name="description"
+            content="A blog were I develop some vague ideas I usually think off. Add it to your RSS feed and feel free to reach out, and discuss fascinating topics together."
+        />
+        <Meta property="og:title" content="Regalk's blogs" />
+        <Meta
+            property="og:description"
+            content="A blog were I develop some vague ideas I usually think off. Add it to your RSS feed and feel free to reach out, and discuss fascinating topics together."
+        />
+        <Meta property="og:image" content="https://regalk.dev/regalk-main.webp" />
+        <Meta property="og:url" content="https://regalk.dev/blog" />
+        <Meta property="og:site_name" content="regalk.dev" />
+        <Meta property="og:type" content="website" />
+        <Link rel="canonical" href="https://regalk.dev/blog" />
+
         <header class="title-main--page--container">
             <h1>BLOG</h1>
         </header>
 
         <div class="blog-posts">
             <p class="blog-posts-desc">
-                "A blog were I develop some vague ideas I usually think off. Add it to your " <a href="./rss.xml" target="_blank">RSS feed</a> " and feel free to reach out, and discuss fascinating topics together."
+                "A blog were I develop some vague ideas I usually think off. Add it to your "
+                <a href="./rss.xml" target="_blank">
+                    RSS feed
+                </a> " and feel free to reach out, and discuss fascinating topics together."
             </p>
             <Suspense fallback=move || {
                 view! { <div>"Loading posts..."</div> }

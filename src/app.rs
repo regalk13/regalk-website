@@ -2,7 +2,7 @@ use crate::components::footer::Footer;
 use crate::sites::{blog::Blog, blog_view::BlogView, contact::Contact, library::Library};
 use leptos::html::{Div, Span};
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
+use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title, Meta};
 use leptos_router::{
     components::{Route, Router, Routes},
     path, StaticSegment,
@@ -46,7 +46,6 @@ pub fn TypewriterComponent() -> impl IntoView {
 }
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
-    let page_description = "Computer scientist specializing in systems programming, AI, and low-level development. Explore my projects in Rust, kernel development, and innovative web solutions.";
     let keywords = "Rust programming, systems programming, kernel development, AI research, web development, Three.js, Leptos, Bevy engine, open source projects";
     let author = "Regalk";
     view! {
@@ -55,7 +54,6 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
             <head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="description" content=page_description />
                 <meta name="keywords" content=keywords />
                 <meta name="author" content=author />
                 <meta name="profile:username" content="regalk13" />
@@ -87,8 +85,8 @@ pub fn App() -> impl IntoView {
     view! {
         <Stylesheet id="leptos" href="/pkg/regalk.css" />
 
-        // sets the document title
-        <Title text="Regalk | Computer Scientist & Full-Stack Developer" />
+
+
         <InitFeather />
 
         // content for this welcome page
@@ -387,6 +385,16 @@ fn ProjectsSection() -> impl IntoView {
 #[component]
 fn HomePage() -> impl IntoView {
     view! {
+        <Title text="Regalk | Computer Scientist & Full-Stack Developer" />
+        <Meta property="og:title" content="Regalk | Computer Scientist & Full-Stack Developer" />
+        <Meta
+            name="description"
+            content="Computer scientist specializing in systems programming, AI, and low-level development. Explore my projects in Rust, kernel development, and innovative web solutions."
+        />
+        <Meta
+            property="og:description"
+            content= "Computer scientist specializing in systems programming, AI, and low-level development. Explore my projects in Rust, kernel development, and innovative web solutions."
+        />
         <main>
             <ScrollAnimations />
             <div class="main-information-container scroll-appear">
@@ -498,7 +506,9 @@ fn HomePage() -> impl IntoView {
                     <h2>"Blog"</h2>
                     <p>
                         A blog were I develop some vague ideas I usually think off. Add it to your
-                        <a href="./rss.xml" target="_blank">RSS feed</a>
+                        <a href="./rss.xml" target="_blank">
+                            RSS feed
+                        </a>
                         " and feel free to reach out—let's discuss fascinating topics together!"
                     </p>
                     <BlogPosts />

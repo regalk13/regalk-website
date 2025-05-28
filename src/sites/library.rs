@@ -1,9 +1,28 @@
 use leptos::prelude::*;
+use leptos_meta::{Meta, Title, Link};
 
 #[component]
 pub fn Library() -> impl IntoView { 
 
     return view! {
+        <Title text="Library | Regalk.dev" />
+
+        <Meta
+            name="description"
+            content="This is my curated collection of both physical and digital resources a library that includes books(fiction and non-fiction), papers and materials I find interesting across various topics. Currently organized into: computer science, mathematics, political science, linguistics/languages, and more."
+        />
+
+        <Meta property="og:title" content="Library Regalk.dev" />
+        <Meta
+            property="og:description"
+            content="This is my curated collection of both physical and digital resources a library that includes books(fiction and non-fiction), papers and materials I find interesting across various topics. Currently organized into: computer science, mathematics, political science, linguistics/languages, and more."
+        />
+        <Meta property="og:type" content="website" />
+        <Meta property="og:url" content="https://regalk.dev/library" />
+        <Meta property="og:site_name" content="regalk.dev" />
+        <Meta property="og:image" content="https://regalk.dev/regalk-main.webp" />
+        <Link rel="canonical" href="https://regalk.dev/library" />
+        
         <header class="title-main--page--container library">
             <h1>LIBRARY</h1>
         </header>
