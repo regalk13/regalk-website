@@ -207,8 +207,7 @@ fn Interests() -> impl IntoView {
         "🕊️ Loves FreeSoftware philosophy.",
         "📚 Enjoys reading books and diving into new ideas.",
         "💻 Loves building software and exploring creative projects in free time.",
-        "🚶 Appreciates minimalism.",
-        "🔤 Enjoys learning languages : 🇪🇸, 🇬🇧, 🇫🇷 (soon 🇩🇪, 🇵🇹).",
+        "🚶 Appreciates minimalism."
     ]
     .into_iter()
     .map(|content| view! { <li class="list-disc">{content}</li> })
@@ -294,6 +293,12 @@ fn ProjectsSection() -> impl IntoView {
             repo: "https://github.com/regalk13/spacewars",
         },
         Project {
+            name: "Lothlórien",
+            description: "My NixOS Flake, place of my system configuration and dotfiles.",
+            technologies: vec!["Nix"],
+            repo: "https://github.com/regalk13/lothlorien",
+        },
+        Project {
             name: "Color Mixer",
             description:
                 "Real-world color blending simulation with physics-based mixing algorithms",
@@ -303,7 +308,7 @@ fn ProjectsSection() -> impl IntoView {
         Project {
             name: "Personal Website",
             description: "Portfolio and blog with custom CMS built using Rust web stack",
-            technologies: vec!["Rust", "Leptos", "Axum", "SSG"],
+            technologies: vec!["Rust", "Leptos", "Axum"],
             repo: "https://github.com/regalk13/regalk-website",
         },
         Project {
@@ -312,13 +317,6 @@ fn ProjectsSection() -> impl IntoView {
                 "Multiplayer UNO game implementation with server-authoritative architecture",
             technologies: vec!["Rust", "WebSockets", "Leptos"],
             repo: "https://github.com/regalk13/uno-rs",
-        },
-        Project {
-            name: "UNO.py",
-            description:
-                "Multiplayer UNO game implementation with server-authoritative architecture",
-            technologies: vec!["Python", "WebSockets", "Django"],
-            repo: "https://github.com/regalk13/uno-game",
         },
         Project {
             name: "Valence Tools",
@@ -352,7 +350,6 @@ fn ProjectsSection() -> impl IntoView {
                                                 )
                                             >
                                                 <h3 class="project-title">{project.name}</h3>
-
                                             </a>
                                         </div>
                                     </div>
@@ -418,7 +415,7 @@ fn HomePage() -> impl IntoView {
                 <div class="about--content">
                     <h2>"About Me"</h2>
                     <p>
-                        "I'm a 20yo who works and study on the CS field, After some years as FullStack developer and representing my country in an international web‑development competition, I redirected that curiosity toward embedded systems writing bare‑metal code, experimenting with IoT prototypes, and implementing AI models onto multiple hardware."
+                        "I'm a 20yo who works and study on the CS field, after some years as FullStack developer and representing my country in an international web‑development competition, I redirected that curiosity toward embedded systems writing bare‑metal code, experimenting with IoT prototypes, and implementing AI models onto multiple hardware."
                     </p>
                     <br />
                     <p>
@@ -501,9 +498,7 @@ fn HomePage() -> impl IntoView {
                     <h2>"Blog"</h2>
                     <p>
                         A blog were I develop some vague ideas I usually think off. Add it to your
-                        <a href="./rss.xml" target="_blank">
-                            RSS feed
-                        </a>
+                        <a href="./rss.xml" target="_blank">RSS feed</a>
                         " and feel free to reach out—let's discuss fascinating topics together!"
                     </p>
                     <BlogPosts />

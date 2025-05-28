@@ -85,7 +85,7 @@ pub fn Blog() -> impl IntoView {
 
         <div class="blog-posts">
             <p class="blog-posts-desc">
-                "A blog were I develop some vague ideas I usually think off. Add it to your RSS feed and feel free to reach out—let's discuss fascinating topics together!"
+                "A blog were I develop some vague ideas I usually think off. Add it to your " <a href="./rss.xml" target="_blank">RSS feed</a> " and feel free to reach out, and discuss fascinating topics together."
             </p>
             <Suspense fallback=move || {
                 view! { <div>"Loading posts..."</div> }
