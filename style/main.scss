@@ -376,10 +376,19 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px !important;
-  font-weight: bold;
   background-color: var(--blue-color);
 }
+
+.blog--post p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.blog--post a {
+  font-size: 50px;
+  font-weight: bold;
+}
+
 
 .glitch {
   position: relative;
