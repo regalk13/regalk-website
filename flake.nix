@@ -56,7 +56,7 @@
             mkdir -p $out/bin $out/site
             install -m755 target/release/regalk $out/bin/
             cp -r target/site/* $out/site
-            cp -r blogs rss.xml Cargo.toml $out/
+            cp -r blogs $out/blogs
           '';
 
           meta = {
