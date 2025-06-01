@@ -21,12 +21,21 @@
             extensions = [ "rust-src" ];
             targets = [ "wasm32-unknown-unknown" ];
           });
+
+        fullSrc = ./.;
+
+        depSrc = craneLib.cleanCargoSource fullSrc;
+
+        cargoArtifacts = craneLib.buildDepsOnly {
+          src = depSrc;
+        };
       in
       {
         packages.default = craneLib.buildPackage {
+          inherit cargoArtifacts;
           pname = "regalk";
           version = "0.1.0";
-          src = craneLib.cleanCargoSource ./.;
+          src = fullSrc;
 
           nativeBuildInputs = with pkgs; [
             pkg-config
@@ -37,8 +46,10 @@
           ];
 
           buildPhase = ''
+            # Set critical environment variables
             export LEPTOS_OUTPUT_NAME=regalk
-            cargo-leptos build --release --features=ssr
+            export LEPTOS_SITE_ROOT=$PWD/target/site
+            cargo-leptos build --release
           '';
 
           installPhase = ''
