@@ -24,7 +24,7 @@ in
         Environment = [
           "LEPTOS_SITE_ROOT=${sitePkg}/site"
           "LEPTOS_SITE_ADDR=${cfg.address}"
-          "BLOGS=${sitePkg}/blogs"
+          "BLOGS_DIR=${sitePkg}/blogs"
         ];
         Restart = "always";
         PrivateTmp = true;
