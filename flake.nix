@@ -33,11 +33,12 @@
             dart-sass
             binaryen
             wasm-bindgen-cli
+            cargo-leptos
           ];
 
           buildPhase = ''
             export LEPTOS_OUTPUT_NAME=regalk
-            cargo leptos build --release --features=ssr
+            cargo-leptos build --release --features=ssr
           '';
 
           installPhase = ''
@@ -60,6 +61,7 @@
             rust-analyzer
             tailwindcss-language-server
             typescript
+            cargo-leptos
           ];
         };
       }
