@@ -23,7 +23,9 @@ pub struct File {
 pub async fn get_blog_posts() -> Result<Vec<File>, ServerFnError> {
     use tokio::fs;
     use std::collections::HashMap;
-    let mut entries = fs::read_dir("./blogs")
+    use std::env;
+    let blog_dir = env::var("BLOGS_DIR").unwrap_or_else(|_| "./blogs".to_string());
+    let mut entries = fs::read_dir(&blog_dir)
         .await
         .map_err(|e| BlogError::Io(format!("Failed to read directory: {}", e)))?;
 
