@@ -62,6 +62,7 @@
             tailwindcss-language-server
             typescript
             cargo-leptos
+            cargo-generate
           ];
         };
       }
