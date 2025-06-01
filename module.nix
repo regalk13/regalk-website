@@ -3,7 +3,6 @@
 let
   cfg = config.services.regalk;
   sitePkg = self.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  self = ...;
 in
 {
   options.services.regalk = {
@@ -16,11 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.regalk = {
-      isSystemUser = true;
-      group = "regalk";
-    };
-    users.groups.regalk = {};
 
     systemd.services.regalk = {
       description = "Regalk website service";
@@ -32,8 +26,6 @@ in
           "LEPTOS_SITE_ROOT=${sitePkg}/site"
           "LEPTOS_SITE_ADDR=${cfg.address}"
         ];
-        User = "regalk";
-        Group = "regalk";
         Restart = "always";
         PrivateTmp = true;
       };
