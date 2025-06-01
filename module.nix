@@ -1,4 +1,4 @@
-self: { lib, pkgs, config, … }:
+self: { lib, pkgs, config, ... }:
 let
   cfg = config.services.regalk;
   sitePkg = self.packages.${pkgs.stdenv.hostPlatform.system}.default;
