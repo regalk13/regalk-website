@@ -15,8 +15,6 @@ use web_sys::Element;
 extern "C" {
     #[wasm_bindgen(js_name = "initTypewriter")]
     pub fn init_typewriter(element: Element, words: Box<[JsValue]>);
-    #[wasm_bindgen(js_name = "initScrollAnimations")]
-    pub fn init_scroll_animations();
     #[wasm_bindgen(js_name = "initFeather")]
     pub fn init_feather();
 }
@@ -110,15 +108,6 @@ pub fn App() -> impl IntoView {
 pub fn ScrollAnimations() -> impl IntoView {
     let el = NodeRef::<Div>::new();
 
-    Effect::new(move |_| {
-        #[cfg(not(feature = "ssr"))]
-        {
-            if let Some(_) = el.get() {
-                init_scroll_animations();
-            }
-        }
-    });
-
     view! { <div node_ref=el></div> }
 }
 
@@ -142,20 +131,23 @@ pub fn InitFeather() -> impl IntoView {
 fn NavBar() -> impl IntoView {
     view! {
         <div class="navbar--container">
-            <ul class="navbar--items">
-                <li class="navbar--item">
-                    <a href="/">"Home"</a>
-                </li>
-                <li class="navbar--item">
-                    <a href="/blog">"Blog"</a>
-                </li>
-                <li class="navbar--item">
-                    <a href="/library">"Library"</a>
-                </li>
-                <li class="navbar--item">
-                    <a href="/contact">"Contact"</a>
-                </li>
-            </ul>
+            <div class="flex flex-row justify-between w-full">
+                <img src="regalk-main.webp" width=30 height=30 />
+                <ul class="navbar--items">
+                    <li class="navbar--item">
+                        <a href="/">"Home"</a>
+                    </li>
+                    <li class="navbar--item">
+                        <a href="/blog">"Blog"</a>
+                    </li>
+                    <li class="navbar--item">
+                        <a href="/library">"Library"</a>
+                    </li>
+                    <li class="navbar--item">
+                        <a href="/contact">"Contact"</a>
+                    </li>
+                </ul>
+            </div>
             <div class="mobile--items">
                 <svg
                     id="mobile-menu-button"
@@ -325,7 +317,7 @@ fn ProjectsSection() -> impl IntoView {
     ];
 
     view! {
-        <div id="projects" class="projects-section scroll-appear">
+        <div id="projects" class="projects-section">
             <div class="project--content">
                 <div class="project-information">
                     <h2 class="section-title">"Featured Projects"</h2>
@@ -397,7 +389,7 @@ fn HomePage() -> impl IntoView {
         />
         <main>
             <ScrollAnimations />
-            <div class="main-information-container scroll-appear">
+            <div class="main-information-container">
                 <div class="main--right-info">
                     <div class="main--right-info-text">
                         <h1>"Welcome to my "<TypewriterComponent /></h1>
@@ -419,7 +411,7 @@ fn HomePage() -> impl IntoView {
                     </figure>
                 </div>
             </div>
-            <section id="about-me" class="about-section scroll-appear">
+            <section id="about-me" class="about-section">
                 <div class="about--content">
                     <h2>"About Me"</h2>
                     <p>
@@ -500,7 +492,7 @@ fn HomePage() -> impl IntoView {
 
             <ProjectsSection />
 
-            <div id="blog" class="blog-section scroll-appear">
+            <div id="blog" class="blog-section">
                 <div class="blog--content">
 
                     <h2>"Blog"</h2>

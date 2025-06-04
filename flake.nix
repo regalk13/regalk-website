@@ -43,6 +43,7 @@
             binaryen
             wasm-bindgen-cli
             cargo-leptos
+            tailwindcss_4
           ]; # pkgs for build the project
 
           buildPhase = ''
@@ -74,6 +75,7 @@
             typescript
             cargo-leptos
             cargo-generate
+            tailwindcss_4
           ];
         }; # Stuff I use on the `nix develop` shell 
       }
