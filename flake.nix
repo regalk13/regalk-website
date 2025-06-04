@@ -11,9 +11,35 @@
   outputs = { self, nixpkgs, crane, flake-utils, rust-overlay, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        cargoLeptosOverrideOverlay = final: prev: {
+          cargo-leptos = prev.cargo-leptos.overrideAttrs (oldAttrs: rec {
+            pname = "cargo-leptos";
+            version = "0.2.35";
+
+            src = prev.fetchFromGitHub {
+              owner = "leptos-rs";
+              repo = "cargo-leptos";
+              rev = "v${version}";
+              hash = "sha256-CNktytEm6+5QTPAlxNz07+s7gue9dA5zZM82YQOWFSw=";
+            };
+
+            cargoDeps = final.rustPlatform.fetchCargoVendor {
+              name = "${pname}-vendor.tar.gz";
+              inherit src;
+              hash = "sha256-O/JyB47UP6rLeAG1rt1dXhaKfZ71QPg7qAeciHAvrAk=";
+            };
+            
+            nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ final.perl ];
+            
+            meta = oldAttrs.meta // {
+              changelog = "https://github.com/leptos-rs/cargo-leptos/releases/tag/v${version}";
+            };
+          });
+        };
+
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ (import rust-overlay) ];
+          overlays = [ (import rust-overlay) cargoLeptosOverrideOverlay ];
           config.allowUnfree = true;
         }; # confg of the pkgs - allowUnFree - and add the rust-overlay 
         craneLib = (crane.mkLib pkgs).overrideToolchain

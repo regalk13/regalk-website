@@ -132,7 +132,10 @@ fn NavBar() -> impl IntoView {
     view! {
         <div class="navbar--container">
             <div class="flex flex-row justify-between w-full">
-                <img src="regalk-main.webp" width=30 height=30 />
+                <div>
+                    <img src="regalk-main.webp" width=30 height=30 />
+                    <p>Regalk</p>            
+                </div>
                 <ul class="navbar--items">
                     <li class="navbar--item">
                         <a href="/">"Home"</a>
