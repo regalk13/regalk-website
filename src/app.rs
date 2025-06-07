@@ -2,7 +2,7 @@ use crate::components::footer::Footer;
 use crate::sites::{blog::Blog, blog_view::BlogView, contact::Contact, library::Library};
 use leptos::html::{Div, Span};
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title, Meta};
+use leptos_meta::{provide_meta_context, Meta, MetaTags, Stylesheet, Title};
 use leptos_router::{
     components::{Route, Router, Routes},
     path, StaticSegment,
@@ -47,7 +47,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
     let keywords = "Rust programming, systems programming, kernel development, AI research, web development, Three.js, Leptos, Bevy engine, open source projects";
     let author = "Regalk";
     view! {
-        <!DOCTYPE html> 
+        <!DOCTYPE html>
         <html lang="en">
             <head>
                 <meta charset="utf-8" />
@@ -132,9 +132,11 @@ fn NavBar() -> impl IntoView {
     view! {
         <div class="navbar--container">
             <div class="flex flex-row justify-between w-full">
-                <div>
-                    <img src="regalk-main.webp" width=30 height=30 />
-                    <p>Regalk</p>            
+                <div class="flex flex-row center gap-2 items-center">
+                    <a href="/">
+                        <img src="regalk-main.webp" width=30 height=30 />
+                        <p class="main--navbar-title">Regalk</p>
+                    </a>
                 </div>
                 <ul class="navbar--items">
                     <li class="navbar--item">
@@ -200,7 +202,7 @@ fn Interests() -> impl IntoView {
         "🕊️ Loves FreeSoftware philosophy.",
         "📚 Enjoys reading books and diving into new ideas.",
         "💻 Loves building software and exploring creative projects in free time.",
-        "🚶 Appreciates minimalism."
+        "🚶 Appreciates minimalism.",
     ]
     .into_iter()
     .map(|content| view! { <li class="list-disc">{content}</li> })

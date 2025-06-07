@@ -8,6 +8,7 @@
   src: url(../fonts/IBMPlexMono-Bold.ttf);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap');
 
 :root {
   ---white-color: #E6F1FF;
@@ -45,7 +46,7 @@ body {
   display: flex;
   position: fixed;
   z-index: 10000;
- width: 100%;
+  width: 100%;
   flex-direction: row;
   align-items: center;
   background-color: rgba(226, 226, 226, 0.9);
@@ -254,6 +255,7 @@ h1 {
 }
 
 h2 {
+  font-family: "IBM Plex Serif", serif;
   color: var(--blue-color);
   font-size: 40px;
   font-weight: bold;
@@ -261,6 +263,7 @@ h2 {
 }
 
 h3 {
+  font-family: "IBM Plex Serif", serif;
   line-height: 50px;
   color: var(--blue-color);
   font-size: 25px;
@@ -655,6 +658,11 @@ a {
   cursor: grab;
 }
 
+.main--navbar-title {
+  color: #000;
+  text-decoration: none;
+}
+
 footer {
   height: 30vh;
   width: 100%;
@@ -983,6 +991,7 @@ footer {
 
 
 .title-main--page--container h1 {
+  font-family: "IBM Plex Serif", serif;
   color: #fff;
   font-size: 120px;
   font-family: IBMPlexMono-Bold;
