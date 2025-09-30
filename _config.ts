@@ -67,7 +67,7 @@ site.data("library", libraryData);
 site.use(tailwindcss());
 site.use(lightningcss());
 site.use(date());
-
+site.url("https://regalk.dev");
 site.data("bookmarks", bookmarksData);
 
 site.use(feed({
