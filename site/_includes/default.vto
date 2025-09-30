@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="darkreader-lock">
+    <meta name="author" content="{{ author }}">
+    <link rel="stylesheet" href="/assets/css/default.css" inline>
+    <style>
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      .theme-toggle {
+        display: none;
+      }
+      .js-enabled .theme-toggle {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="main-spaced overflow-x-hidden min-h-screen">
+    <header>
+      <h1 class="main-page-title">
+        <a href="/">regalk.dev</a>
+      </h1>
+      <nav>
+        <a href="/about">ABOUT ME</a>
+        <a href="/#writings">WRITINGS</a>
+        <a href="/misc">MISC</a>
+        <a href="/contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      <div class="flex justify-between">
+        <p>
+          &#169; 2025 - regalk.dev
+        </p>
+        <div class="flex row gap-3">
+          <p>
+            <a href="/posts.rss">rss</a>
+          </p>
+          <p>
+            |
+          </p>
+          <p>
+            <a href="https://github.com/regalk13/regalk-website" target="_blank" rel="noopener noreferrer">src</a>
+          </p>  
+        </div>
+      </div>
+    </footer>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-toggle-slider"></span>
+    </button>
+    <script>
+      (function () {
+        // Add class to indicate JS is enabled
+        document.documentElement.classList.add("js-enabled");
+        
+        const savedTheme = localStorage.getItem("theme");
+        const initialTheme = savedTheme || "light";
+
+        if (initialTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+
+        const themeToggle = document.getElementById("themeToggle");
+        if (themeToggle) {
+          themeToggle.addEventListener("click", function () {
+            const isDark = document.documentElement.classList.contains("dark");
+
+            if (isDark) {
+              document.documentElement.classList.remove("dark");
+              localStorage.setItem("theme", "light");
+            } else {
+              document.documentElement.classList.add("dark");
+              localStorage.setItem("theme", "dark");
+            }
+          });
+        }
+
+        window.matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", function (e) {
+            if (!localStorage.getItem("theme")) {
+              if (e.matches) {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>

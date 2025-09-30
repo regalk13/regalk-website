@@ -1,0 +1,70 @@
+---
+layout: default.vto
+title: All Tags
+---
+<div>
+  <section id="tags">
+    <h2>All Tags</h2>
+    <p>Browse content by topic</p>
+
+    {{ set allTags = [] }}
+
+    {{ for post of search.pages("type=post") }}
+      {{ if post.tags }}
+        {{ set allTags = allTags.concat(post.tags) }}
+      {{ /if }}
+    {{ /for }}
+
+    {{ if bookmarks }}
+      {{ for bookmark of bookmarks }}
+        {{ if bookmark.tags }}
+          {{ set allTags = allTags.concat(bookmark.tags) }}
+        {{ /if }}
+      {{ /for }}
+    {{ /if }}
+
+    {{ set uniqueTags = [...new Set(allTags)].sort() }}
+
+    <div class="my-6">
+      {{ for tag of uniqueTags }}
+        <p class="writing-elem--tags">
+            <a href={{ "/tag/" + tag }}>{{ tag }}</a>
+        </p>
+      {{ /for }}
+    </div>
+  </section>
+</div>
+
+<style>
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .tag-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-text);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 0.2s;
+  }
+
+  .tag-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .writing-elem--tags a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .writing-elem--tags a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+</style>

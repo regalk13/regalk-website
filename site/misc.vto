@@ -1,0 +1,99 @@
+---
+title: Misc
+---
+<section id="misc">
+  <p>
+    This page is meant to be the index of the bookmarks and personal indexing,
+    check my personal <a href="#library">library</a>, the daily thoughts and
+    learning notes also <a href="#notes">here</a>.
+  </p>
+
+  <p>
+    You can use <a href="/tags">tags</a> to search for topics on this site.
+  </p>
+
+  <div>
+    <h2>
+      # Bookmarks
+    </h2>
+    <div>
+      {{ for category of ['papers', 'books', 'videos', 'posts'] }}
+        {{
+          set categoryBookmarks = bookmarks.filter((b) => b.category === category)
+        }}
+        {{ if categoryBookmarks.length > 0 }}
+          <div class="bookmark-category my-6" data-category="{{ category }}">
+            <h3 class="mb-4">{{ category }}</h3>
+            <div class="bookmarks-list">
+              {{ for bookmark of categoryBookmarks }}
+                <div class="writing-elem" id="{{ bookmark.id }}">
+                  <p class="writing-elem--date">
+                    {{ bookmark.date |> date("PPPP") }}
+                  </p>
+                  <h3>
+                    <a
+                      href="{{ bookmark.url }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {{ bookmark.title }}
+                    </a>
+                    {{ if bookmark.author }}
+                      <span class="text-sm opacity-70">— {{
+                          bookmark.author
+                        }}</span>
+                    {{ /if }}
+                  </h3>
+                  {{ if bookmark.description }}
+                    <p class="text-sm opacity-80 my-1">
+                      {{ bookmark.description }}
+                    </p>
+                  {{ /if }}
+                  <!-- Display tags with pipe separator -->
+                  <p class="writing-elem--tags">
+                    {{ bookmark.tags |> join(" | ") }}
+                  </p>
+                </div>
+              {{ /for }}
+            </div>
+          </div>
+        {{ /if }}
+      {{ /for }}
+    </div>
+  </div>
+
+  <div id="library" class="mb-10">
+    <h2>
+      Library
+    </h2>
+    <p>
+      My personal library, mostly physical books. I have an old Kindle I
+      sometimes use so I add those e-books here too.
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-10 mt-8">
+      {{ for categoryGroup of library }}
+        <div class="book-category">
+          <h3>{{ categoryGroup.category }}</h3>
+          <ul>
+            {{ for book of categoryGroup.books }}
+              <li class="book-item-li">
+                 {{ book.title }}{{ if book.author }}
+                      - {{ book.author }}{{ /if }}
+              </li>
+            {{ /for }}
+          </ul>
+        </div>
+      {{ /for }}
+    </div>
+  </div>
+
+  <div id="notes">
+    <h2>
+      Daily thoughts / learning notes
+    </h2>
+    <p>
+      Soon....
+    </p>
+  </div>
+</section>

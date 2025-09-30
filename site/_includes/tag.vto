@@ -1,0 +1,78 @@
+---
+layout: default.vto
+---
+
+<div>
+  <section>
+    <h2>Tag: {{ tag }}</h2>
+
+    <p class="text-sm opacity-70 mb-4">
+      Showing all content tagged with "{{ tag }}"
+    </p>
+
+    <!-- Blog Posts -->
+    <div class="my-6">
+      <h3 class="text-xl mb-4">Blog Posts</h3>
+      <div class="writings">
+        {{ for post of search.pages("type=post", "date=desc") }}
+          {{ if post.tags && post.tags.includes(tag) }}
+            <div class="writing-elem">
+              <p class="writing-elem--date">
+                {{ post.date |> date("PPPP") }}
+              </p>
+              <h3>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+              </h3>
+              <p class="writing-elem--tags">
+                {{ post.tags |> join(" | ") }}
+              </p>
+            </div>
+          {{ /if }}
+        {{ /for }}
+      </div>
+    </div>
+
+    <div class="my-6">
+      <h3 class="text-xl mb-4">Bookmarks</h3>
+      <div class="writings">
+        {{ if bookmarks }}
+          {{ for bookmark of bookmarks }}
+            {{ if bookmark.tags && bookmark.tags.includes(tag) }}
+              <div class="writing-elem">
+                <p class="writing-elem--date">
+                  {{ bookmark.date |> date("PPPP") }}
+                </p>
+                <h3>
+                  <a
+                    href="{{ bookmark.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{ bookmark.title }}
+                  </a>
+                  {{ if bookmark.author }}
+                    <span class="text-sm opacity-70">— {{
+                        bookmark.author
+                      }}</span>
+                  {{ /if }}
+                </h3>
+                {{ if bookmark.description }}
+                  <p class="text-sm opacity-80 my-1">
+                    {{ bookmark.description }}
+                  </p>
+                {{ /if }}
+                <p class="writing-elem--tags">
+                  {{ bookmark.tags |> join(" | ") }}
+                </p>
+              </div>
+            {{ /if }}
+          {{ /for }}
+        {{ /if }}
+      </div>
+    </div>
+
+    <p class="mt-8">
+      <a href="/tags/">← Back to all tags</a>
+    </p>
+  </section>
+</div>
