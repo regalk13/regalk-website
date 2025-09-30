@@ -70,7 +70,6 @@ site.use(date());
 
 site.data("bookmarks", bookmarksData);
 
-
 site.use(feed({
   output: ["/posts.rss", "/posts.json"],
   query: "type=post",

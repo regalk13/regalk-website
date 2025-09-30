@@ -78,8 +78,8 @@ title: Misc
           <ul>
             {{ for book of categoryGroup.books }}
               <li class="book-item-li">
-                 {{ book.title }}{{ if book.author }}
-                      - {{ book.author }}{{ /if }}
+                {{ book.title }}{{ if book.author }}
+                  - {{ book.author }}{{ /if }}
               </li>
             {{ /for }}
           </ul>

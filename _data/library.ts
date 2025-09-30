@@ -128,7 +128,7 @@ export default [
         author: "Nassim Taleb",
         isbn: "9780812973815",
         link: "https://openlibrary.org/isbn/9780812973815",
-      }
+      },
     ],
   },
   {

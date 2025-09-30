@@ -51,8 +51,12 @@
             |
           </p>
           <p>
-            <a href="https://github.com/regalk13/regalk-website" target="_blank" rel="noopener noreferrer">src</a>
-          </p>  
+            <a
+              href="https://github.com/regalk13/regalk-website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >src</a>
+          </p>
         </div>
       </div>
     </footer>
@@ -63,7 +67,7 @@
       (function () {
         // Add class to indicate JS is enabled
         document.documentElement.classList.add("js-enabled");
-        
+
         const savedTheme = localStorage.getItem("theme");
         const initialTheme = savedTheme || "light";
 
@@ -76,7 +80,9 @@
         const themeToggle = document.getElementById("themeToggle");
         if (themeToggle) {
           themeToggle.addEventListener("click", function () {
-            const isDark = document.documentElement.classList.contains("dark");
+            const isDark = document.documentElement.classList.contains(
+              "dark",
+            );
 
             if (isDark) {
               document.documentElement.classList.remove("dark");

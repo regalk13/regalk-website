@@ -28,7 +28,7 @@ title: All Tags
     <div class="my-6">
       {{ for tag of uniqueTags }}
         <p class="writing-elem--tags">
-            <a href={{ "/tag/" + tag }}>{{ tag }}</a>
+          <a href='{{ "/tag/" + tag }}'>{{ tag }}</a>
         </p>
       {{ /for }}
     </div>
