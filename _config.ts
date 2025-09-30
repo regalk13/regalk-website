@@ -21,7 +21,7 @@ site.data("site_name", "Regalk's website");
 site.data("title", "Regalk's website");
 site.data(
   "description",
-  "Regalk is a engineer student, interested in systems programming, embedded systems, mathematics, and various CS topics. Here he shares his work and bookmarks",
+  "Regalk is a software engineering student specializing in systems programming, embedded systems, and HPC. Here he shares curated resources on low level programming, operating systems, computer architecture, algorithms, and mathematical foundations of computer science."
 );
 site.data("author", "regalk");
 
