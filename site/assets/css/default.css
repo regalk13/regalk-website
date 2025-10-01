@@ -4,7 +4,7 @@
   font-family: "Typestar";
   font-style: normal;
   font-weight: 100 900;
-  font-display: block;
+  font-display: swap;
   src: url("/assets/fonts/Typestar_OCR_Regular.otf") format("opentype");
 }
 
