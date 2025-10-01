@@ -21,6 +21,16 @@ export const bookmarks: Bookmark[] = [
     date: new Date("2024-01-15"),
     author: "Vaswani et al.",
   },
+  {
+    id: "2",
+    title: "Essence of linear algebra",
+    url: "https://youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&si=42GCg-0-wNWc6t2t",
+    description: "A free course offering the core concept of linear algebra with a visuals-first approach.",
+    category: "videos",
+    tags: ["linear-algebra", "vectors", "math-matrix"],
+    date: new Date("2016-08-06"),
+    author: "3Blue1Brown"
+  }
 ];
 
 export default bookmarks;
