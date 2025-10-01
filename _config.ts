@@ -2,6 +2,7 @@ import lume from "lume/mod.ts";
 
 import tailwindcss from "lume/plugins/tailwindcss.ts";
 import lightningcss from "lume/plugins/lightningcss.ts";
+import inline from "lume/plugins/inline.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
@@ -67,6 +68,7 @@ site.data("library", libraryData);
 
 site.use(tailwindcss());
 site.use(lightningcss());
+site.use(inline());
 site.use(date());
 site.use(robots());
 site.url("https://regalk.dev");
