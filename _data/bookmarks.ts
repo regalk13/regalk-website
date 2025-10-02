@@ -40,6 +40,16 @@ export const bookmarks: Bookmark[] = [
     tags: ["discrete-mathematics", "proofs"],
     date: new Date("2018-10-01"),
     author: "Richard Hammack"    
+  },
+  {
+    id: "4",
+    title: "MIT 6.042J Mathematics for Computer Science",
+    url: "https://www.youtube.com/playlist?list=PLB7540DEDD482705B",
+    description: "This course covers elementary discrete mathematics. Mathematical definitions and proofs are emphasized. Topics include formal logic, induction, graph theory, asymptotic notation and growth of functions, counting principles, and discrete probability",
+    category: "videos",
+    tags: ["discrete-mathematics", "proofs", "cs"],
+    date: new Date("2014-07-02"),
+    author: "MIT OpenCourseWare"
   }
 ];
 
