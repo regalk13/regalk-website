@@ -59,7 +59,7 @@ site.data("projects", [
     name: "Previous personal website",
     description:
       "My old personal website made in leptops and deployed using nix.",
-    url: "https://github.com/regalk13/regalk-website",
+    url: "https://github.com/regalk13/old-regalk-website",
     technologies: ["rust", "wasm", "leptos"],
   },
 ]);
