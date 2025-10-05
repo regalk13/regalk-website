@@ -50,7 +50,7 @@ export const bookmarks: Bookmark[] = [
     tags: ["discrete-mathematics", "proofs", "cs"],
     date: new Date("2014-07-02"),
     author: "MIT OpenCourseWare"
-  }
+  },
   {
     id: "5",
     title: "Bloom’s 3 Stages of Talent Development",
