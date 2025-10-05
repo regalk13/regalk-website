@@ -51,6 +51,16 @@ export const bookmarks: Bookmark[] = [
     date: new Date("2014-07-02"),
     author: "MIT OpenCourseWare"
   }
+  {
+    id: "5",
+    title: "Bloom’s 3 Stages of Talent Development",
+    url: "https://www.justinmath.com/blooms-3-stages-of-talent-development/",
+    description: " First, fun and exciting playtime. Then, intense and strenuous skill development. Finally, developing one's individual style while pushing the boundaries of the field.",
+    category: "posts",
+    tags: ["learning", "learning-method"],
+    date: new Date("2024-04-30"),
+    author: "Justin Skycak (@justinskycak)"
+  }
 ];
 
 export default bookmarks;
