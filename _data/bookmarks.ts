@@ -60,6 +60,16 @@ export const bookmarks: Bookmark[] = [
     tags: ["learning", "learning-method"],
     date: new Date("2024-04-30"),
     author: "Justin Skycak (@justinskycak)"
+  },
+  {
+    id: "6",
+    title: "The Computer from Pascal to von Neumann",
+    url: "https://monoskop.org/images/f/fc/Goldstine_Herman_H_The_Computer_from_Pascal_to_von_Neumann.pdf",
+    description: "",
+    category: "books",
+    tags: ["cs", "computer-architecture"],
+    date: new Date("1972-01-01"),
+    author: "Herman H. Goldstine"
   }
 ];
 
