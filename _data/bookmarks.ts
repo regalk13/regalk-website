@@ -79,14 +79,17 @@ export const bookmarks: Bookmark[] = [
   },
   {
     id: "7",
-    title: "Secrets of Mental Math: The Mathemagician's Guide to Lightning Calculation and Amazing Math Tricks",
-    url: "https://books.google.com.co/books?id=aaT_KKERF6AC&source=gbs_book_other_versions_r&redir_esc=y",
-    description: "These simple math secrets and tricks will forever change how you look at the world of numbers.",
+    title:
+      "Secrets of Mental Math: The Mathemagician's Guide to Lightning Calculation and Amazing Math Tricks",
+    url:
+      "https://books.google.com.co/books?id=aaT_KKERF6AC&source=gbs_book_other_versions_r&redir_esc=y",
+    description:
+      "These simple math secrets and tricks will forever change how you look at the world of numbers.",
     category: "books",
     tags: ["learning", "learning-method", "math"],
     date: new Date("2006-08-08"),
-    author: "Arthur Benjamin, Michael Shermer"
-  }
+    author: "Arthur Benjamin, Michael Shermer",
+  },
 ];
 
 export default bookmarks;
